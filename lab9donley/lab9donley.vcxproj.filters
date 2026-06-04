@@ -15,8 +15,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab9donley.cpp">
+    <ClCompile Include="arrow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ghost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ghost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objects1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\arrow.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\ghost.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kirby0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kirby1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kirby2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kirby3.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\kirby4.png">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
