@@ -4,6 +4,9 @@
 #include "player.h"
 #include "ghost.h"
 #include "Arrow.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 int main(void)
 {
@@ -56,6 +59,7 @@ int main(void)
 	al_start_timer(timer);
 	while (!done)
 	{
+		
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 
@@ -81,6 +85,10 @@ int main(void)
 				Arrows[i].CollideArrow(ghosts, NUM_ghostS);
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Collideghost(myPlayer);
+			if (myPlayer.checkLife() == 0) {
+				std::this_thread::sleep_for(std::chrono::seconds(5));
+				break;
+			}
 		}
 		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 		{
