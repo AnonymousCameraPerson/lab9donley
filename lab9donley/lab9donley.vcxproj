@@ -175,6 +175,9 @@
     <Image Include="..\..\..\..\Downloads\kirby3.png" />
     <Image Include="..\..\..\..\Downloads\kirby4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\Downloads\college.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\AllegroDeps.1.16.0\build\native\AllegroDeps.targets" Condition="Exists('..\packages\AllegroDeps.1.16.0\build\native\AllegroDeps.targets')" />

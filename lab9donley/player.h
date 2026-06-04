@@ -16,6 +16,8 @@ public:
 	int getY() { return y; }
 	void removeLife() { lives--; }
 	int checkLife();
+	void increaseHits();
+	int getHits();
 private:
 	int x;
 	int y;
@@ -24,6 +26,7 @@ private:
 	int boundx;
 	int boundy;
 	int score;
+	int hits;
 	ALLEGRO_BITMAP* image;
 };
 #endif

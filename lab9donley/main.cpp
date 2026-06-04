@@ -1,6 +1,8 @@
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_image.h>
+#include <allegro5\allegro_font.h>
+#include <allegro5\allegro_ttf.h>
 #include "player.h"
 #include "ghost.h"
 #include "Arrow.h"
@@ -29,6 +31,7 @@ int main(void)
 	ALLEGRO_DISPLAY* display = NULL;
 	ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 	ALLEGRO_TIMER* timer = NULL;
+	ALLEGRO_FONT* font = al_load_ttf_font(".ttf", 24, 0);
 
 	//Initialization Functions
 	if (!al_init())										//initialize Allegro
@@ -65,6 +68,8 @@ int main(void)
 
 		if (ev.type == ALLEGRO_EVENT_TIMER)
 		{
+			std::cout << "Kirby: "<<myPlayer.checkLife()<<"/5";
+			std::cout << "Ghosts: "<< myPlayer.getHits() <<"/"<<NUM_ghostS;
 			redraw = true;
 			if (keys[UP])
 				myPlayer.MoveUp();

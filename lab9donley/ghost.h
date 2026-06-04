@@ -16,10 +16,12 @@ public:
 	int getY() { return y; }
 	bool getLive() { return live; }
 	void setLive(bool l) { live = l; }
+	int getHits();
 private:
 	int x;
 	int y;
 	bool live;
+	int hits;
 	int speed;
 	int boundx;
 	int boundy;

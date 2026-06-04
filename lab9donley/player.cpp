@@ -20,6 +20,9 @@ player::player(int HEIGHT)
 	boundy = al_get_bitmap_height(image);
 	score = 0;
 }
+void player::increaseHits() {
+	hits += 1;
+}
 void player::DrawPlayer()
 {
 	if (lives == 5) {
@@ -38,6 +41,9 @@ void player::DrawPlayer()
 		image = al_load_bitmap("Kirby4.png");
 	}
 	al_draw_bitmap(image, x, y, 0);
+}
+int player::getHits() {
+	return hits;
 }
 void player::MoveUp()
 {
