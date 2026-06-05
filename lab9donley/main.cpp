@@ -31,7 +31,7 @@ int main(void)
 	ALLEGRO_DISPLAY* display = NULL;
 	ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 	ALLEGRO_TIMER* timer = NULL;
-	ALLEGRO_FONT* font = al_load_ttf_font(".ttf", 24, 0);
+	
 
 	//Initialization Functions
 	if (!al_init())										//initialize Allegro
@@ -44,7 +44,9 @@ int main(void)
 
 	al_install_keyboard();
 	al_init_image_addon();
-
+	al_init_font_addon();
+	al_init_ttf_addon();
+	ALLEGRO_FONT* font = al_load_ttf_font("college.ttf", 24, 0);
 	//object variables
 	player myPlayer(HEIGHT);
 	Arrow Arrows[NUM_ArrowS];
@@ -66,10 +68,12 @@ int main(void)
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 
+
 		if (ev.type == ALLEGRO_EVENT_TIMER)
 		{
-			std::cout << "Kirby: "<<myPlayer.checkLife()<<"/5";
-			std::cout << "Ghosts: "<< myPlayer.getHits() <<"/"<<NUM_ghostS;
+			//std::cout << "Kirby: "<<myPlayer.checkLife()<<"/5";
+			
+			//std::cout << "Ghosts: "<< myPlayer.getHits() <<"/"<<NUM_ghostS;
 			redraw = true;
 			if (keys[UP])
 				myPlayer.MoveUp();
@@ -90,10 +94,7 @@ int main(void)
 				Arrows[i].CollideArrow(ghosts, NUM_ghostS);
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Collideghost(myPlayer);
-			if (myPlayer.checkLife() == 0) {
-				std::this_thread::sleep_for(std::chrono::seconds(5));
-				break;
-			}
+
 		}
 		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 		{
@@ -159,15 +160,28 @@ int main(void)
 				Arrows[i].DrawArrow();
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Drawghost();
-
+			if (myPlayer.checkLife() == 0) {
+				al_draw_text(font, al_map_rgb(255, 255, 255), 5, 5, ALLEGRO_ALIGN_LEFT, "My lives: 0 out of 5");
+				break;
+			}
+			else {
+				al_draw_textf(font, al_map_rgb(255, 255, 255), 5, 5, ALLEGRO_ALIGN_LEFT, "My lives: %i out of 5", myPlayer.checkLife());
+			}
 			al_flip_display();
-			al_clear_to_color(al_map_rgb(0, 0, 0));
-		}
-	}
 
+			al_clear_to_color(al_map_rgb(0, 0, 0));
+			
+			
+		}
+
+	}
+	al_flip_display();
+	std::this_thread::sleep_for(std::chrono::seconds(5));
 	al_destroy_event_queue(event_queue);
 	al_destroy_timer(timer);
+	al_destroy_font(font);
 	al_destroy_display(display);						//destroy our display object
+	
 	system("Pause");
 	return 0;
 }
