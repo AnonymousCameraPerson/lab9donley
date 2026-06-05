@@ -17,6 +17,7 @@ int main(void)
 	const int HEIGHT = 400;
 	const int NUM_ArrowS = 5;
 	const int NUM_ghostS = 10;
+	int ghosts_shown;
 	enum KEYS { UP, DOWN, LEFT, RIGHT, SPACE };
 	bool keys[5] = { false, false, false, false, false };
 
@@ -74,6 +75,7 @@ int main(void)
 			//std::cout << "Kirby: "<<myPlayer.checkLife()<<"/5";
 			
 			//std::cout << "Ghosts: "<< myPlayer.getHits() <<"/"<<NUM_ghostS;
+			al_draw_textf(font, al_map_rgb(255, 255, 255), 5, 30, ALLEGRO_ALIGN_LEFT, "Ghosts killed: %i ", myPlayer.getHits());
 			redraw = true;
 			if (keys[UP])
 				myPlayer.MoveUp();
@@ -91,7 +93,7 @@ int main(void)
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Updateghost();
 			for (int i = 0;i < NUM_ArrowS;i++)
-				Arrows[i].CollideArrow(ghosts, NUM_ghostS);
+				Arrows[i].CollideArrow(ghosts, NUM_ghostS, myPlayer);
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Collideghost(myPlayer);
 

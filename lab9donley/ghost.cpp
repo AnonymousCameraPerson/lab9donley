@@ -61,7 +61,7 @@ void ghost::Collideghost(player& Player)
 			y + boundy > Player.getY() - Player.getBoundY())
 		{
 			Player.removeLife();
-			Player.increaseHits();
+			
 			live = false;
 		}
 		else if (x < 0)

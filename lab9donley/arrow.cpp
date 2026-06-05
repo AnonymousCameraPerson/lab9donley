@@ -38,7 +38,7 @@ void Arrow::UpdateArrow(int WIDTH)
 			live = false;
 	}
 }
-void Arrow::CollideArrow(ghost ghosts[], int cSize)
+void Arrow::CollideArrow(ghost ghosts[], int cSize, player& Player)
 {
 	if (live)
 	{
@@ -51,6 +51,7 @@ void Arrow::CollideArrow(ghost ghosts[], int cSize)
 					y >(ghosts[j].getY() - ghosts[j].getBoundY()) &&
 					y < (ghosts[j].getY() + ghosts[j].getBoundY()))
 				{
+					Player.increaseHits();
 					live = false;
 					ghosts[j].setLive(false);
 				}
